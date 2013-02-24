@@ -11,4 +11,8 @@ plugin.tx_fluidlanguageselector {
 		# cat=plugin.tx_fluidlanguageselector//a; type=string; label=Default storage PID
 		storagePid =
 	}
+
+	settings {
+    	defaultLanguageIsoCode = EN
+    }
 }

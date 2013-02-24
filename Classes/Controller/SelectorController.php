@@ -35,16 +35,32 @@ namespace T3B\FluidLanguageSelector\Controller;
 class SelectorController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
     /**
-     * @var \T3B\ExtbaseCoreTables\Domain\Repository\PageRepository
+     * @var \T3B\FluidLanguageSelector\LanguageMenuBuilder
      */
-    protected $pageRepository;
+    protected $menuBuilder;
 
-    public function injectPageRepository(\T3B\ExtbaseCoreTables\Domain\Repository\PageRepository $pageRepository) {
-        $this->pageRepository = $pageRepository;
+    public function injectMenuBuilder(\T3B\FluidLanguageSelector\LanguageMenuBuilder $builder) {
+        $this->menuBuilder = $builder;
     }
 
     public function showAction() {
-        $currentPage = $this->pageRepository->currentPage();
-        $this->view->assign('page', $currentPage);
+
+        $menuItems = $this->menuBuilder->buildMenuItems($this->settings['defaultLanguageIsoCode']);
+
+        $currentItem = NULL;
+        $otherItems = array();
+        foreach($menuItems as $item) {
+            /** @var $item \T3B\FluidLanguageSelector\LanguageMenuItem */
+            if($item->getIsCurrentLanguage()) {
+                $currentItem = $item;
+            } else {
+                $otherItems[] = $item;
+            }
+        }
+
+        $this->view->assign('all', $menuItems);
+        $this->view->assign('current', $currentItem);
+        $this->view->assign('other', $otherItems);
+
     }
 }

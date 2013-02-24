@@ -11,4 +11,8 @@ plugin.tx_fluidlanguageselector {
 		# uncomment the following line to enable the new Property Mapper.
 		# rewrittenPropertyMapper = 1
 	}
+
+	settings {
+		defaultLanguageIsoCode = {$plugin.tx_fluidlanguageselector.settings.defaultLanguageIsoCode}
+	}
 }
