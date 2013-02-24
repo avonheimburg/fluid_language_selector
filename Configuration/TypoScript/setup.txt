@@ -1,0 +1,39 @@
+plugin.tx_fluidlanguageselector {
+	view {
+		templateRootPath = {$plugin.tx_fluidlanguageselector.view.templateRootPath}
+		partialRootPath = {$plugin.tx_fluidlanguageselector.view.partialRootPath}
+		layoutRootPath = {$plugin.tx_fluidlanguageselector.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_fluidlanguageselector.persistence.storagePid}
+	}
+	features {
+		# uncomment the following line to enable the new Property Mapper.
+		# rewrittenPropertyMapper = 1
+	}
+}
+
+plugin.tx_fluidlanguageselector._CSS_DEFAULT_STYLE (
+	textarea.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	input.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	.tx-fluid-language-selector table {
+		border-collapse:separate;
+		border-spacing:10px;
+	}
+
+	.tx-fluid-language-selector table th {
+		font-weight:bold;
+	}
+
+	.tx-fluid-language-selector table td {
+		vertical-align:top;
+	}
+)
